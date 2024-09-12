@@ -1,0 +1,6 @@
+﻿services:
+  contacts:
+    image: contacts
+    build:
+      context: .
+      dockerfile: contacts/Dockerfile
