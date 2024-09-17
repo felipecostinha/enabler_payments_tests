@@ -4,16 +4,11 @@ using contacts.Repository;
 
 namespace contacts.Services.Impl;
 
-public class ZipCodeServiceImpl: IZipCodeService
+public class ZipCodeServiceImpl(HttpClient httpClient) : IZipCodeService
 {
-    private static readonly HttpClient HttpClient = new()
-    {
-        BaseAddress = new Uri("https://viacep.com.br/ws/"),
-    };
-    
     public async Task<ZipCode> Consult(string zipCode)
     {
-        var zipCodeResponse = await HttpClient.GetFromJsonAsync<ZipCode>($"{zipCode}/json");
+        var zipCodeResponse = await httpClient.GetFromJsonAsync<ZipCode>($"{zipCode}/json");
 
         if (zipCodeResponse is null)
         {

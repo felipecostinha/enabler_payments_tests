@@ -18,6 +18,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IContactService, ContactServiceImpl>();
 builder.Services.AddScoped<IContactRepository, ContactRepositoryImpl>();
 builder.Services.AddScoped<IZipCodeService, ZipCodeServiceImpl>();
+builder.Services.AddHttpClient<IZipCodeService, ZipCodeServiceImpl>(client =>
+    client.BaseAddress = new Uri("https://viacep.com.br/ws/"));
 builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseInMemoryDatabase("test"));
 
 var app = builder.Build();
@@ -38,3 +40,7 @@ app.MapControllers();
 app.UseCors();
 
 app.Run();
+
+public partial class Program
+{
+}
