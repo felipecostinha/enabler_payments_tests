@@ -25,37 +25,37 @@ public class ContactSteps
     #region Given
 
     [Given("id is '(.*)'")]
-    public async void IdIs(string id)
+    public void IdIs(string id)
     {
         _contact.Id = int.Parse(id);
     }
 
     [Given("first name is '(.*)'")]
-    public async void FirstNameIs(string firstName)
+    public void FirstNameIs(string firstName)
     {
         _contact.FirstName = firstName;
     }
 
     [Given("last name is '(.*)'")]
-    public async void LastNameIs(string lastName)
+    public void LastNameIs(string lastName)
     {
         _contact.LastName = lastName;
     }
 
     [Given("email is '(.*)'")]
-    public async void EmailIs(string email)
+    public void EmailIs(string email)
     {
         _contact.Email = email;
     }
 
     [Given("phone number is '(.*)'")]
-    public async void PhoneNumberIs(string phoneNumber)
+    public void PhoneNumberIs(string phoneNumber)
     {
         _contact.PhoneNumber = phoneNumber;
     }
 
     [Given("exists an contact with id '(.*)'")]
-    public async void ExistsAnContactWithId(int id)
+    public void ExistsAnContactWithId(int id)
     {
         IdIs("1");
         FirstNameIs("Felipe");

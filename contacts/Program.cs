@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IContactService, ContactServiceImpl>();
 builder.Services.AddScoped<IContactRepository, ContactRepositoryImpl>();
+builder.Services.AddScoped<IZipCodeService, ZipCodeServiceImpl>();
 builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseInMemoryDatabase("test"));
 
 var app = builder.Build();
@@ -33,5 +34,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors();
 
 app.Run();
