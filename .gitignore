@@ -1,2 +1,14 @@
 /bin/
 /obj/
+/specflow_test/obj/
+/specflow_test/bin/
+/contacts.unitTests/bin/
+/contacts.unitTests/obj/
+/contacts.integratedTest/obj/
+/contacts.integratedTest/bin/
+/contacts.specflowTest/obj/
+/contacts.specflowTest/bin/
+/contacts/obj/
+/contacts/bin/
+/.vs/
+/.idea/
