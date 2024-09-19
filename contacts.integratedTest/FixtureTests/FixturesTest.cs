@@ -1,6 +1,8 @@
 using System.Net.Http.Json;
+using System.Threading.Tasks;
 using contacts.Domain;
 using contacts.integratedTest.Config;
+using Xunit;
 
 namespace contacts.integratedTest.FixtureTests;
 
@@ -14,9 +16,7 @@ public class FixturesTest
         await using var application = new ContactsAppFactory();
 
         var uri = $"/api/ZipCode/{zipCode}";
-
         var client = application.CreateClient();
-
         var zipCodeResponse = await client.GetFromJsonAsync<ZipCode>(uri);
 
         Assert.NotNull(zipCodeResponse);
