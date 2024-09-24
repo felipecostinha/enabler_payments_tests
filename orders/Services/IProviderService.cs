@@ -1,11 +1,11 @@
 ﻿using orders.Domain;
 
-namespace orders.Repository;
+namespace orders.Services;
 
-public interface IProviderRepository
+public interface IProviderService
 {
     void SaveProvider(Provider provider);
-    Task<Provider?> GetProviderById(int id);
+    Task<Provider?> GetProviderById(string id);
     Task<List<Provider>> GetProviders();
     void UpdateProvider(Provider provider);
 }

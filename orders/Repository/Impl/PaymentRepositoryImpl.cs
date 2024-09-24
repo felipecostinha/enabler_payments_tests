@@ -19,7 +19,7 @@ public class PaymentRepositoryImpl : IPaymentRepository
         _context.SaveChangesAsync().GetAwaiter(); ;
     }
 
-    public async Task<Payment?> GetPaymentById(int id)
+    public async Task<Payment?> GetPaymentById(string id)
     {
         return await _context.Payments.FindAsync(id);
     }

@@ -3,18 +3,33 @@ using orders.Repository;
 
 namespace orders.Services.Impl;
 
-public class ProviderService
+public class ProviderService : IProviderService
 {
-    private readonly IProviderRepository _providerRepository;
+    private readonly IProviderRepository _repository;
 
     public ProviderService(IProviderRepository providerRepository)
     {
-        _providerRepository = providerRepository;
+        _repository = providerRepository;
     }
 
-    public async void CreateProvider(Provider provider)
+    public void SaveProvider(Provider provider)
     {
-        _providerRepository.SaveProvider(provider);
+        _repository.SaveProvider(provider);
 
+    }
+
+    public Task<Provider?> GetProviderById(string id)
+    {
+        return _repository.GetProviderById(id);
+    }
+
+    public Task<List<Provider>> GetProviders()
+    {
+        return _repository.GetProviders();
+    }
+
+    public void UpdateProvider(Provider provider)
+    {
+        _repository.UpdateProvider(provider);
     }
 }

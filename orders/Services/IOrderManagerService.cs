@@ -2,9 +2,9 @@
 
 public interface IOrderManagerService
 {
-    public void CreateOrder();
+    public void Authorize(string paymentId);
 
-    public void Authorize();
+    public void Cancel(string paymentId);
 
-    public void Cancel();
+    public void Settle(string paymentId);
 }

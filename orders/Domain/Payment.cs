@@ -11,7 +11,7 @@ public enum PaymentStatus
 
 public class Payment
 {
-    public int Id { get; set; }
+    public string Id { get; set; }
 
     public double Value { get; set; }
 

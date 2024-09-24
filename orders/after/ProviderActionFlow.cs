@@ -14,6 +14,17 @@ public class ProviderActionFlow : Provider
             ProviderUtils.ScheduleJob(delayToSettle, OnSettle, [payment]);
         }
         ProviderUtils.ScheduleJob(payment.DelayToCancel, OnCancel, [payment]);
+
+        // Comportamento adicionado - PIX após aprovado será capturado após 5min
+        if (payment.PaymentSystem == "PIX" && payment.Value < 5)
+        {
+            payment.Status = PaymentStatus.Authorized;
+            ProviderUtils.ScheduleJob(
+                ProviderUtils.PIX_DEFAULT_DELAY_TO_SETTLE, 
+                OnSettle, 
+                [payment]
+            );
+        }
     }
 
     public void OnSettle(Payment payment)

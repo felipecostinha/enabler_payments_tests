@@ -1,28 +1,68 @@
-﻿using orders.Repository;
-
-namespace orders.Services.Impl;
+﻿namespace orders.Services.Impl;
 
 public class OrderManagerService : IOrderManagerService
 {
-    private readonly IPaymentRepository _paymentRepository;
+    private readonly IPaymentService _paymentService;
+    private readonly IProviderService _providerService;
 
-    public OrderManagerService(IPaymentRepository paymentRepository)
+    public OrderManagerService(IPaymentService paymentService, IProviderService providerService)
     {
-        _paymentRepository = paymentRepository;
+        _paymentService = paymentService;
+        _providerService = providerService;
     }
 
-    public async void CreateOrder()
+    public async void Authorize(string paymentId)
     {
+        var payment = await _paymentService.GetPaymentById(paymentId);
+        if (payment == null)
+        {
+            throw new Exception("Payment not found");
+        }
+
+        var provider = await _providerService.GetProviderById(payment.ProviderId);
+
+        if (provider == null)
+        {
+            throw new Exception("Provider not found");
+        }
+
+        provider.OnAuthorize(payment);
 
     }
 
-    public async void Authorize()
+    public async void Cancel(string paymentId)
     {
+        var payment = await _paymentService.GetPaymentById(paymentId);
+        if (payment == null)
+        {
+            throw new Exception("Payment not found");
+        }
 
+        var provider = await _providerService.GetProviderById(payment.ProviderId);
+
+        if (provider == null)
+        {
+            throw new Exception("Provider not found");
+        }
+
+        provider.OnCancel(payment);
     }
 
-    public async void Cancel()
+    public async void Settle(string paymentId)
     {
+        var payment = await _paymentService.GetPaymentById(paymentId);
+        if (payment == null)
+        {
+            throw new Exception("Payment not found");
+        }
 
+        var provider = await _providerService.GetProviderById(payment.ProviderId);
+
+        if (provider == null)
+        {
+            throw new Exception("Provider not found");
+        }
+
+        provider.OnSettle(payment);
     }
 }

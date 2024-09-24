@@ -15,6 +15,7 @@ public class ProviderFields
 
 public class Provider
 {
+    public string Id;
     public required string Name
     {
         get; set;

@@ -1,0 +1,8 @@
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.csproj.AssemblyReference.cache
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.AssemblyInfoInputs.cache
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.AssemblyInfo.cs
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.csproj.CoreCompileInputs.cache
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\maiana.brito\Documents\vtex\apresentacao\enabler_payments_tests\orders\obj\Debug\net8.0\orders.sourcelink.json
