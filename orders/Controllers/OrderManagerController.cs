@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using orders.Domain;
 using orders.Services;
 
 namespace orders.Controllers;
@@ -16,14 +15,14 @@ public class OrderManagerController : ControllerBase
         _service = service;
     }
 
-    [HttpGet("{id:string}")]
+    [HttpPost("{id:string}/authorize")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ActionResult> Get(string id)
+    public async Task<ActionResult> Authorize(string id)
     {
         try
         {
-            return Ok(await _service.GetPaymentById(id));
+            return Ok(await _service.Authorize(id));
         }
         catch (Exception e)
         {
@@ -33,70 +32,37 @@ public class OrderManagerController : ControllerBase
         }
     }
 
-
-
-    [HttpPut]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-    public async Task<ActionResult> Update([FromBody] Payment payment)
-    {
-        try
-        {
-            return Ok(await _service.UpdatePayment(payment));
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            return UnprocessableEntity(e.Message);
-        }
-    }
-
-    [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult Create([FromBody] Payment payment)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
-        try
-        {
-            _service.SavePayment(payment);
-
-            //return Created($"api/contacts/{contact.Id}", contact);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            return UnprocessableEntity(e.Message);
-        }
-    }
-
-    [HttpGet]
+    [HttpPost("{id:string}/cancel")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ActionResult> GetAll()
+    public async Task<ActionResult> Authorize(string id)
     {
         try
         {
-            var orders = await _service.GetOrders();
-
-            if (orders.Any())
-            {
-                return Ok(orders);
-            }
+            return Ok(await _service.Authorize(id));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
 
             return NoContent();
         }
+    }
+
+    [HttpPost("{id:string}/settle")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> Authorize(string id)
+    {
+        try
+        {
+            return Ok(await _service.Authorize(id));
+        }
         catch (Exception e)
         {
             Console.WriteLine(e);
 
-            throw;
+            return NoContent();
         }
     }
 }
