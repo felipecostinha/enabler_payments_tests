@@ -19,12 +19,12 @@ public class ProviderRepositoryImpl : IProviderRepository
         _context.SaveChangesAsync().GetAwaiter(); ;
     }
 
-    public async Task<Payment?> GetProviderById(string id)
+    public async Task<Provider?> GetProviderById(string id)
     {
         return await _context.Providers.FindAsync(id);
     }
 
-    public async Task<List<Payment>> GetProviders()
+    public async Task<List<Provider>> GetProviders()
     {
         return await _context.Providers.ToListAsync();
     }

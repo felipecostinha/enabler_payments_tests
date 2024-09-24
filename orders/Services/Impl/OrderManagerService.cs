@@ -1,4 +1,6 @@
-﻿namespace orders.Services.Impl;
+﻿using orders.Domain;
+
+namespace orders.Services.Impl;
 
 public class OrderManagerService : IOrderManagerService
 {
@@ -11,7 +13,7 @@ public class OrderManagerService : IOrderManagerService
         _providerService = providerService;
     }
 
-    public async void Authorize(string paymentId)
+    public async Task<Payment> Authorize(string paymentId)
     {
         var payment = await _paymentService.GetPaymentById(paymentId);
         if (payment == null)
@@ -28,9 +30,12 @@ public class OrderManagerService : IOrderManagerService
 
         provider.OnAuthorize(payment);
 
+        _paymentService.UpdatePayment(payment);
+
+        return payment;
     }
 
-    public async void Cancel(string paymentId)
+    public async Task<Payment> Cancel(string paymentId)
     {
         var payment = await _paymentService.GetPaymentById(paymentId);
         if (payment == null)
@@ -46,9 +51,13 @@ public class OrderManagerService : IOrderManagerService
         }
 
         provider.OnCancel(payment);
+
+        _paymentService.UpdatePayment(payment);
+
+        return payment;
     }
 
-    public async void Settle(string paymentId)
+    public async Task<Payment> Settle(string paymentId)
     {
         var payment = await _paymentService.GetPaymentById(paymentId);
         if (payment == null)
@@ -64,5 +73,9 @@ public class OrderManagerService : IOrderManagerService
         }
 
         provider.OnSettle(payment);
+
+        _paymentService.UpdatePayment(payment);
+
+        return payment;
     }
 }

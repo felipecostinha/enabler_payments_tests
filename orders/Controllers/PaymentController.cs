@@ -42,7 +42,8 @@ public class PaymentController : ControllerBase
     {
         try
         {
-            return Ok(await _service.UpdatePayment(payment));
+            _service.UpdatePayment(payment);
+            return Ok();
         }
         catch (Exception e)
         {
@@ -66,7 +67,7 @@ public class PaymentController : ControllerBase
         {
             _service.SavePayment(payment);
 
-            //return Created($"api/contacts/{contact.Id}", contact);
+            return Created($"api/payments/{payment.Id}", payment);
         }
         catch (Exception e)
         {

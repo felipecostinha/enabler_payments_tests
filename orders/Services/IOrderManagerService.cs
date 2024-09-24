@@ -1,10 +1,12 @@
-﻿namespace orders.Services;
+﻿using orders.Domain;
+
+namespace orders.Services;
 
 public interface IOrderManagerService
 {
-    public void Authorize(string paymentId);
+    public Task<Payment> Authorize(string paymentId);
 
-    public void Cancel(string paymentId);
+    public Task<Payment> Cancel(string paymentId);
 
-    public void Settle(string paymentId);
+    public Task<Payment> Settle(string paymentId);
 }

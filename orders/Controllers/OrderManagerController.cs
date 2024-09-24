@@ -35,11 +35,11 @@ public class OrderManagerController : ControllerBase
     [HttpPost("{id:string}/cancel")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ActionResult> Authorize(string id)
+    public async Task<ActionResult> Cancel(string id)
     {
         try
         {
-            return Ok(await _service.Authorize(id));
+            return Ok(await _service.Cancel(id));
         }
         catch (Exception e)
         {
@@ -52,11 +52,11 @@ public class OrderManagerController : ControllerBase
     [HttpPost("{id:string}/settle")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ActionResult> Authorize(string id)
+    public async Task<ActionResult> Settle(string id)
     {
         try
         {
-            return Ok(await _service.Authorize(id));
+            return Ok(await _service.Settle(id));
         }
         catch (Exception e)
         {

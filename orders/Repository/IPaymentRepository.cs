@@ -7,5 +7,5 @@ public interface IPaymentRepository
     void SavePayment(Payment payment);
     Task<Payment?> GetPaymentById(string id);
     Task<List<Payment>> GetPayments();
-    void UpdatePayment(Payment contact);
+    void UpdatePayment(Payment payment);
 }
