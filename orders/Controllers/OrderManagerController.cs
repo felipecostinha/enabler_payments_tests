@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using orders.Domain;
 using orders.Services;
 
 namespace orders.Controllers;
@@ -13,6 +14,30 @@ public class OrderManagerController : ControllerBase
     public OrderManagerController(IOrderManagerService service)
     {
         _service = service;
+    }
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public ActionResult Create([FromBody] Payment payment)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        try
+        {
+            _service.CreatePayment(payment);
+
+            return Created($"api/order/{payment.Id}", payment);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+
+            return UnprocessableEntity(e.Message);
+        }
     }
 
     [HttpPost("{id:string}/authorize")]

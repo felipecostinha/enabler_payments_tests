@@ -13,6 +13,11 @@ public class OrderManagerService : IOrderManagerService
         _providerService = providerService;
     }
 
+    public void CreatePayment(Payment payment)
+    {
+        _paymentService.SavePayment(payment);
+    }
+
     public async Task<Payment> Authorize(string paymentId)
     {
         var payment = await _paymentService.GetPaymentById(paymentId);

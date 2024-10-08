@@ -53,30 +53,6 @@ public class PaymentController : ControllerBase
         }
     }
 
-    [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult Create([FromBody] Payment payment)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
-        try
-        {
-            _service.SavePayment(payment);
-
-            return Created($"api/payments/{payment.Id}", payment);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-
-            return UnprocessableEntity(e.Message);
-        }
-    }
-
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

@@ -2,6 +2,8 @@ using orders;
 using orders.Repository;
 using orders.Repository.Impl;
 using Microsoft.EntityFrameworkCore;
+using orders.Services;
+using orders.Services.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IProviderService, ProviderService>();
+builder.Services.AddScoped<IOrderManagerService, OrderManagerService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepositoryImpl>();
 builder.Services.AddScoped<IProviderRepository, ProviderRepositoryImpl>();
 builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseInMemoryDatabase("orders_test"));

@@ -2,7 +2,7 @@
 
 namespace orders.after;
 
-public class ProviderActionFlow : Provider
+public class ProviderActionFlow : Provider, IProviderActionFlow
 {
     public void OnAuthorize(Payment payment)
     {
