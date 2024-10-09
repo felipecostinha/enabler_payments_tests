@@ -28,20 +28,4 @@ public class Provider
     public bool UsesAutoSettleOptions { get; set; }
 
     public bool IsDelivered { get; set; }
-
-    public bool isValidCustomDelayToAutoSettle(int delay)
-    {
-        if (UsesAutoSettleOptions)
-        {
-            var min = Fields?.AutoSettleDelayOptions?.Minimum ?? 0;
-            var max = Fields?.AutoSettleDelayOptions?.Minimum ?? 0;
-
-            if (delay > min || delay < max)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }

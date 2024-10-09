@@ -2,14 +2,14 @@
 
 namespace orders.after;
 
-public class ProviderActionFlow : Provider, IProviderActionFlow
+public class ProviderActionFlow : IProviderActionFlow
 {
-    public void OnAuthorize(Payment payment)
+    public void OnAuthorize(Provider provider, Payment payment)
     {
         if (payment.Value > 10)
         {
             payment.Status = PaymentStatus.Authorized;
-            var delayToSettle = isValidCustomDelayToAutoSettle(payment.DelayToSettle) ?
+            var delayToSettle = ProviderValidator.isValidCustomDelayToAutoSettle(payment.DelayToSettle, provider) ?
                 payment.DelayToSettle : ProviderUtils.DEFAULT_DELAY_TO_SETTLE;
             ProviderUtils.ScheduleJob(delayToSettle, OnSettle, [payment]);
         }
