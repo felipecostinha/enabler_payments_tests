@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "contacts.specflowTest", "co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "contacts.integratedTest", "contacts.integratedTest\contacts.integratedTest.csproj", "{FE1D96EB-34D1-4A9D-BA28-B697EF0452F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "orders", "orders\orders.csproj", "{4CD1C31A-09BA-4E74-AA72-BB156ECEB72F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "orders", "orders\orders.csproj", "{4CD1C31A-09BA-4E74-AA72-BB156ECEB72F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "orders.specflowTest", "orders.specflowTest\orders.specflowTest.csproj", "{143B319F-FACB-40BD-8ADB-73C2C7DAB573}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{4CD1C31A-09BA-4E74-AA72-BB156ECEB72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CD1C31A-09BA-4E74-AA72-BB156ECEB72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CD1C31A-09BA-4E74-AA72-BB156ECEB72F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{143B319F-FACB-40BD-8ADB-73C2C7DAB573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143B319F-FACB-40BD-8ADB-73C2C7DAB573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143B319F-FACB-40BD-8ADB-73C2C7DAB573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143B319F-FACB-40BD-8ADB-73C2C7DAB573}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
